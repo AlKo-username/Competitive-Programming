@@ -25,9 +25,6 @@ for(int k=0;k<n;k++){
         solution[a][b]=solution[a][k]+solution[k][b];
     }
 }
-if(solution[a][b]!=999999){
-    brpath++;
-}
     }
 }
 for(int a=0;a<n;a++){
@@ -36,6 +33,6 @@ cout<<solution[a][b]<<" ";
     }
     cout<<endl;
 }
-cout<<brpath;
+//cout<<brpath;
     return 0;
 }
