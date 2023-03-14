@@ -1,4 +1,4 @@
-#include <bits\stdc++.h>
+#include <bits/stdc++.h>
 int parents[10000], size[10000];
 struct edge
 {
