@@ -17,7 +17,7 @@ int main()
                 std::cin >> t;
                
                 cube[a][b][c] = cube[a - 1][b][c] + cube[a][b - 1][c] + cube[a][b][c - 1] + cube[a - 1][b - 1][c - 1] - cube[a - 1][b][c - 1] - cube[a - 1][b - 1][c] - cube[a][b - 1][c - 1];
-                 std::cout<<cube[a][b][c]<<" ";
+                 //std::cout<<cube[a][b][c]<<" ";
                   if (t == 'G')
                 {
                     cube[a][b][c]++;

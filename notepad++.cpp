@@ -1,24 +1,20 @@
 #include <bits/stdc++.h>
-bool opo[2000000]; int k;
-std::vector<int> occurences;
-
-int fimd(int ind, int distancesofar, int taken,int  best){
-if(taken==k){
-    return best;
-}
-if(ind==occurences.size()-1){
-    return -10000;
-}
-
-return std::max(fimd(ind+1, distancesofar+occurences[ind+1]-occurences[ind], taken,best),fimd(ind+1,0,taken+1));
-}
+#pragma gcc optimize("03")
+int k;
+// std::vector<int> occurences;
+int a = 1, t = 0;
+int mapt[1020], occurences[500000], numocs;
+std::string vhod, pat;
+int patcounter = 0, o = 0;
 int main()
 {
-    std::string vhod, pat;
-   
+    std::cin.tie(0);
+    std::cout.tie(0);
+    std::ios_base::sync_with_stdio(false);
+
     std::cin >> vhod >> pat >> k;
-    int a = 1, t = 0;
-    int mapt[1020];
+
+    int  m = vhod.length();
     while (a < pat.length())
     {
         if (pat[a] == pat[t])
@@ -40,26 +36,26 @@ int main()
             }
         }
     }
-    int patcounter = 0, o = 0;
-    
-    while ((vhod.length() - o) >= (pat.length() - patcounter))
+
+    while ((m - o) >= (pat.length() - patcounter))
     {
-        std::cout<<o<<" "<<patcounter<<"\n";
+        // std::cout<<o<<" "<<patcounter<<"\n";
         if (vhod[o] == pat[patcounter])
         {
             o++;
             patcounter++;
         }
-        if (patcounter == pat.length())
+        if (patcounter ==pat.length())
         {
-            occurences.push_back(o-pat.length());
+            occurences[numocs] = o;
+            numocs++;
             patcounter = mapt[patcounter - 1];
         }
-        else if (o < vhod.length() && pat[patcounter] != vhod[o])
+        else if (o < m && pat[patcounter] != vhod[o])
         {
-            if (patcounter > 0)
+            if (patcounter != 0)
             {
-                o++;
+
                 patcounter = mapt[patcounter - 1];
             }
             else
@@ -68,28 +64,45 @@ int main()
             }
         }
     }
-    int r=occurences.size(); 
-    for(auto l:occurences){
-        std::cout<<l<<" ";
-    }
-    // int currbest=occurences[r-1]-occurences[0],bestind;
-    // while(r>(k+2)){
-       
-    //     for(int u=1;u<occurences.size()-1;u++){
-    //         int p=u+1;
-    //         while(opo[p]){
-    //             p++;
-    //         }
-    //         p--;
-    //         if(currbest>occurences[p]-occurences[u]){
-    //             currbest=occurences[p]-occurences[u];
-    //             bestind=p;
-    //         }
-
-    //     }
-    //     r--;
-    //     opo[bestind]=true;
+    int l = 0, r = 50000, mid = 70;
+    // std::cout<<numocs;
+    // for(int p=0;p<numocs;p++){
+    //     std::cout<<occurences[p]<<"\n";
     // }
-    // std::cout<<currbest;
+    while (true)
+    {
+        // std::cout<<l<<" "<<r<<" "<<mid<<"\n";
+        mid = (r + l) / 2;
+        if (r == l + 1)
+        {
+            break;
+        }
+        int last = 0, acc = 1;
+        bool doeswork = false;
+        for (int a = 1; a < numocs; a++)
+        {
+          //  std::cout<<"gay balls";
+            if ((occurences[a] - occurences[last]-pat.length()) >= mid)
+            {
+                acc++;
+                last = a;
+            }
+            if (acc == k)
+            {
+                doeswork = true;
+                break;
+            }
+        }
+        if (doeswork)
+        {
+            l = mid;
+        }
+        else
+        {
+            r = mid;
+        }
+    }
+
+    std::cout << mid;
     return 0;
 }
