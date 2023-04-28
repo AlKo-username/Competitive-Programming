@@ -4,23 +4,21 @@ std::vector<long long> specials;//={70,97,700,970,997,2120,3148,7000,9700,9970,9
 int main(){
     //int i=1+16+512;
     //std::cout<<i;
+//    std::cout.tie(std::ostream);
     int t=0;
+    
     std::cout<<"{";
 for(long long a=0;a<1e18 && t<=250;a++){
-long long k=a*a;
-bool has[10]={false,false,false,false,false,false,false,false,false,false};
+__int128_t k=a*a;
+short int p=0,o;
+//bool has[10]={false,false,false,false,false,false,false,false,false,false};
 while(k>0){
-   
-has[k%10]=true;
-if(k%10!=0 && k%10!=4 && k%10!=9){
-has[0]=false;
-    break;
-    
-}
+o=k%10;
+p=p|o;
 k/=10;
 }
 
-if(has[0] && has[4] && has[9]){
+if(p==529){
 t++;
   std::cout<<a<<",";
 }

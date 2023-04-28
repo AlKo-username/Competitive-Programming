@@ -4,12 +4,12 @@ int main()
 {   std::ios_base::sync_with_stdio(false);
     std::cin.tie(0);
     std::cout.tie(0);
-    int n, m;
-    std::cin >> n >> m;
+    int l,m,n;
+    std::cin >> l >> m >> n;
     // int p=0;
-    for (int a = 1; a <= n; a++)
+    for (int a = 1; a <= l; a++)
     {
-        for (int b = 1; b <= n; b++)
+        for (int b = 1; b <= m; b++)
         {
             for (int c = 1; c <= n; c++)
             {
@@ -27,10 +27,11 @@ int main()
         }
     }
     // std::cout<<'\n'<<p;
-    while (m-- > 0)
+          int a, b, c, x, y, z;
+    while (std::cin >> a >> b >> c >> x >> y >> z)
     {
-        int a, b, c, x, y, z;
-        std::cin >> a >> b >> c >> x >> y >> z;
+  
+        
         int a1 = std::min(a, x), b1 = std::min(b, y), c1 = std::min(c, z), x1 = std::max(a, x), y1 = std::max(b, y), z1 = std::max(c, z);
         std::cout << cube[x1][y1][z1] - (cube[a1 - 1][y1][z1] + cube[x1][b1 - 1][z1] + cube[x1][y1][c1 - 1] - cube[a1-1][b1 - 1][z1] - cube[a1-1][y1][c1 - 1]-cube[x1][b1-1][c1-1]+cube[a1-1][b1-1][c1-1]) << "\n";
     }
