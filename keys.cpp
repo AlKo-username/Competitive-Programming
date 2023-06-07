@@ -1,16 +1,4 @@
 #include <bits/stdc++.h>
-<<<<<<< HEAD
-std::string vhod[100000];
-int main(){
-int n;
-std::cin>>n;
-for(int a=0;a<n;a++){
-    std::cin>>vhod[a];
-}
-sort(vhod, vhod+n-1);
-    return 0;
-}
-=======
 
 // std::vector<std::string> words;
 std::string t;
@@ -70,4 +58,3 @@ int main()
 // p
 // o
 // $
->>>>>>> e723d931c5c88b2a5b16be564eff2a543239fe84
