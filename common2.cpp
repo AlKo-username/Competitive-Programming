@@ -2,7 +2,7 @@
 const long long maxn = 1e5 + 4, maxk = 10, mod = 1e8 + 7, base = 30;
 unsigned long long hesh[mod];
 long long stepen[maxn];
-int n, k;
+long long n, k;
 std::string vhod[maxk];
 int main()
 {
@@ -27,11 +27,12 @@ int main()
     {
         std::getline(std::cin, vhod[i]);
         vhod[i] += vhod[i];
+       // std::cout<<vhod[i]<<"\n";
     }
     int r = n, l = 1, mid, beginind = 0, str = 0;
-    bool works = false;
+   
     while (true)
-    {
+    { bool works = false;
       //  std::cout<<l<<" "<<r<<"\n";
         mid = (r + l) / 2;
         if(l==r-1){
@@ -48,12 +49,15 @@ int main()
               //  std::cout<<vhod[i][t]<<"\n";
             }
             hesh[hamsh] |= (1 << i);
-            if (hesh[hamsh] == (1 << (k + 1) - 1))
+            std::cout<<hamsh<<" "<<(1 << (k )) - 1<<" "<<hesh[hamsh]<<"\n";
+            if (hesh[hamsh] == (long long)(1 << (k) - 1))
             {
                 works = true;
                 beginind = 0;
                 str = i;
                 std::cout<<str<<" "<<beginind<<" "<<mid<<" "<<hesh[hamsh]<<"\n";
+                
+                //break;
             }
             //std::cout<<hamsh<<" ";
             for (int j = mid; (j + mid - 1) < (2 * n - 1); j++)
@@ -72,11 +76,13 @@ int main()
                 hamsh %= mod;
               //  std::cout<<hamsh<<" ";
                 hesh[hamsh] |= (1 << i);
-                if (hesh[hamsh] == (1 << (k + 1) - 1))
+                if (hesh[hamsh] == (1 << (k ) - 1))
                 {
+                    
                     works = true;
                     beginind = j;
                     str = i;
+                  //  break;
                 }
             }
         }
