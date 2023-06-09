@@ -1,5 +1,5 @@
 #include <bits/stdc++.h>
-const double pi=3.142;
+const inline double pi=3.142;
 struct Point{
 double x;
 double y;
@@ -13,8 +13,8 @@ if(a.x<b.x){
 }
 return false;
 }
-double dist(const Point &a, const Point &b){
-    return sqrt((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y));
+inline double dist(const Point &a, const Point &b){
+    return sqrt((double)(a.x-b.x)*(double)(a.x-b.x)+(double)(a.y-b.y)*(double)(a.y-b.y));
 }
 double oriented(const Point &a, const Point &b, const Point &c){
     return std::abs(a.x-b.x)*(a.y+b.y)+std::abs(b.x-c.x)*(a.y+b.y)-std::abs(a.x-c.x)*(a.y+c.y);
@@ -25,8 +25,8 @@ std::cin>>n>>r;
 Point p;
 for(int a=0;a<n;a++){
 std::cin>>p.x>>p.y;
-p.x+=20000.0;
-p.y+=20000.0;
+//p.x+=20000.0;
+//p.y+=20000.0;
 points.push_back(p);
 }
 //std::cout<<"\n";
@@ -53,12 +53,12 @@ for(int a=n-1;a>=0;a--){
 //     std::cout<<up[a].x<<" "<<up[a].y<<"\n";
 // }
 double area=2.0*r*pi;
-for(int a=0;a<down.size()-1;a++){
-area+=dist(down[a],down[a+1]);
-}
+up.insert(up.end(),down.rbegin(),down.rend());
 for(int a=0;a<up.size()-1;a++){
     area+=dist(up[a],up[a+1]);
+    std::cout<<dist(up[a],up[a+1])<<" "<<up[a].x<<" "<<up[a].y<<"\n";
 }
+
 std::cout<</*<<std::fixed<<std::setprecision(3)<<*/area<<"\n";
     return 0;
 }
